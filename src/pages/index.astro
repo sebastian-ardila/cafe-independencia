@@ -12,6 +12,7 @@ const products = [
     weight: '250g',
     description: 'Cafe de origen del eje cafetero, tostado artesanal semanal. Perfil con notas de panela, chocolate y frutas.',
     price: 25000,
+    image: 'producto-cafe.jpg',
   },
   {
     id: 'libra',
@@ -20,6 +21,7 @@ const products = [
     description: 'Nuestro cafe insignia en presentacion completa. Ideal para el hogar o la oficina. Molido o en grano.',
     price: 45000,
     popular: true,
+    image: 'producto-cafe.jpg',
   },
   {
     id: 'cold-brew',
@@ -27,6 +29,7 @@ const products = [
     weight: '350ml',
     description: 'Extraccion en frio por 18 horas. Listo para tomar. Suave, dulce y refrescante. Botella de vidrio.',
     price: 12000,
+    image: 'producto-cold-brew.jpg',
   },
 ];
 
@@ -82,28 +85,22 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
         {products.map((product) => (
           <div class="product-card" data-product-id={product.id} data-product-name={product.name} data-product-price={product.price}>
             {product.popular && <div class="popular-badge">Mas vendido</div>}
-            <div class="product-icon">
-              {product.id === 'cold-brew' ? (
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M8 2h8v4a6 6 0 01-6 6H8V2z"/><path d="M16 6h2a2 2 0 012 2v1a3 3 0 01-3 3h-1"/><line x1="6" y1="18" x2="18" y2="18"/><line x1="7" y1="22" x2="17" y2="22"/><line x1="9" y1="18" x2="8" y2="22"/><line x1="15" y1="18" x2="16" y2="22"/>
-                </svg>
-              ) : (
-                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/>
-                </svg>
-              )}
+            <div class="product-img-wrap">
+              <img src={`${base}${product.image}`} alt={product.name} loading="lazy" />
             </div>
-            <div class="product-info">
-              <h3>{product.name}</h3>
-              <span class="product-weight">{product.weight}</span>
-              <p>{product.description}</p>
-            </div>
-            <div class="product-bottom">
-              <div class="product-price">{formatPrice(product.price)}</div>
-              <div class="quantity-control">
-                <button class="qty-btn qty-minus" aria-label="Reducir cantidad">&minus;</button>
-                <span class="qty-value">0</span>
-                <button class="qty-btn qty-plus" aria-label="Aumentar cantidad">+</button>
+            <div class="product-body">
+              <div class="product-info">
+                <h3>{product.name}</h3>
+                <span class="product-weight">{product.weight}</span>
+                <p>{product.description}</p>
+              </div>
+              <div class="product-bottom">
+                <div class="product-price">{formatPrice(product.price)}</div>
+                <div class="quantity-control">
+                  <button class="qty-btn qty-minus" aria-label="Reducir cantidad">&minus;</button>
+                  <span class="qty-value">0</span>
+                  <button class="qty-btn qty-plus" aria-label="Aumentar cantidad">+</button>
+                </div>
               </div>
             </div>
           </div>
@@ -224,24 +221,11 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: 2.5rem 2rem 2rem;
     display: flex;
     flex-direction: column;
     position: relative;
     transition: all var(--transition);
     overflow: hidden;
-  }
-
-  .product-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--color-secondary), var(--color-accent));
-    opacity: 0;
-    transition: opacity var(--transition);
   }
 
   .product-card:hover {
@@ -250,42 +234,53 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     transform: translateY(-4px);
   }
 
-  .product-card:hover::before { opacity: 1; }
-
   .product-card.selected {
     border-color: var(--color-secondary);
     box-shadow: var(--shadow-glow);
   }
 
-  .product-card.selected::before { opacity: 1; }
-
   .popular-badge {
     position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
-    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+    top: 1rem;
+    left: 1rem;
+    background: var(--color-primary);
     color: var(--color-white);
     font-size: 0.68rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 0.35rem 0.85rem;
+    padding: 0.4rem 0.9rem;
     border-radius: var(--radius-full);
+    z-index: 2;
   }
 
-  .product-icon {
-    margin-bottom: 1.5rem;
-    width: 56px;
-    height: 56px;
+  .product-img-wrap {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--color-bg-warm);
+    position: relative;
+  }
+
+  .product-img-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .product-card:hover .product-img-wrap img {
+    transform: scale(1.05);
+  }
+
+  .product-body {
+    padding: 1.5rem 1.5rem 1.25rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-accent-light);
-    border-radius: 16px;
-    color: var(--color-secondary);
+    flex-direction: column;
+    flex: 1;
   }
 
-  .product-info { flex: 1; margin-bottom: 1.5rem; }
+  .product-info { flex: 1; margin-bottom: 1.25rem; }
 
   .product-info h3 {
     font-size: 1.3rem;
