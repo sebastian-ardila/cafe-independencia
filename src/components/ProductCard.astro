@@ -120,9 +120,7 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     flex: 1;
   }
 
-  /* Info crece para empujar actions al fondo */
   .product-info {
-    flex: 1;
   }
 
   .product-info h3 {
@@ -139,9 +137,9 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     margin-bottom: 0;
   }
 
-  /* Actions siempre al fondo */
   .product-actions {
-    margin-top: 1.25rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
   }
 
   .variant-selector {
