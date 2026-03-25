@@ -19,9 +19,9 @@ const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
     </button>
     <nav class="nav" id="main-nav">
       <a href={`${base}`} class:list={[{ active: currentPath === base || currentPath === base.slice(0, -1) }]}>Inicio</a>
-      <a href={`${base}productos`} class:list={[{ active: currentPath.includes('/productos') }]}>Productos</a>
+      <a href={`${base}#productos`}>Productos</a>
       <a href={`${base}contacto`} class:list={[{ active: currentPath.includes('/contacto') }]}>Contacto</a>
-      <a href={`${base}productos`} class="nav-cta">Pedir ahora</a>
+      <a href={`${base}#productos`} class="nav-cta">Pedir ahora</a>
     </nav>
   </div>
 </header>
