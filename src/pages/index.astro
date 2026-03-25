@@ -3,7 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import MenuCard from '../components/MenuCard.astro';
 
-const base = import.meta.env.BASE_URL;
+const rawBase = import.meta.env.BASE_URL;
+const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 
 const destacados = [
   { name: 'Espresso Doble', description: 'Shot doble de nuestro blend con notas de panela y chocolate.', price: '$5.500' },
