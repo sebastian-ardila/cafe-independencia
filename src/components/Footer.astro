@@ -9,33 +9,34 @@ const year = new Date().getFullYear();
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">
-          <img src={`${base}cafe_independencia_logo_2.png`} alt="Café Independencia" class="footer-logo-img" />
+          <img src={`${base}cafe_independencia_logo_2.png`} alt="Cafe Independencia" class="footer-logo-img" />
           <div class="footer-logo-text">
             <span class="footer-name">INDEPENDENCIA</span>
-            <span class="footer-tagline">café de especialidad</span>
+            <span class="footer-tagline">cafe de especialidad</span>
           </div>
         </div>
-        <p class="footer-desc">Café de origen, tostado artesanal y envíos a toda Colombia desde Pereira.</p>
+        <p class="footer-desc">Cafe de origen, tostado artesanal y experiencias de cafe en Pereira, Colombia.</p>
       </div>
       <div class="footer-col">
         <h4>Navegar</h4>
         <a href={`${base}`}>Inicio</a>
-        <a href={`${base}productos`}>Productos</a>
+        <a href={`${base}#productos`}>Productos</a>
+        <a href={`${base}#servicios`}>Servicios</a>
         <a href={`${base}contacto`}>Contacto</a>
       </div>
       <div class="footer-col">
-        <h4>Visítanos</h4>
+        <h4>Visitanos</h4>
         <p>Cra 7 # 19-32, Centro</p>
         <p>Pereira, Risaralda</p>
       </div>
       <div class="footer-col">
         <h4>Pedidos</h4>
-        <a href="https://wa.me/573023231629" target="_blank" rel="noopener">WhatsApp: +57 302 323 1629</a>
+        <a href="https://wa.me/573023231629" target="_blank" rel="noopener">+57 302 323 1629</a>
         <p>@cafeindependencia</p>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; {year} Café Independencia</p>
+      <p>&copy; {year} Cafe Independencia</p>
       <p>Pereira, Colombia</p>
     </div>
   </div>
@@ -44,7 +45,7 @@ const year = new Date().getFullYear();
 <style>
   .footer {
     background: var(--color-primary);
-    color: rgba(254, 254, 254, 0.6);
+    color: rgba(255, 255, 255, 0.6);
     padding-top: 4.5rem;
   }
 
@@ -71,97 +72,26 @@ const year = new Date().getFullYear();
     opacity: 0.9;
   }
 
-  .footer-logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1;
-  }
+  .footer-logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .footer-name { font-family: var(--font-logo); font-size: 1.15rem; font-weight: 800; color: #fff; letter-spacing: 0.1em; line-height: 1.1; }
+  .footer-tagline { font-family: var(--font-logo); font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.22em; color: rgba(255,255,255,0.3); margin-top: 2px; }
+  .footer-desc { font-size: 0.88rem; line-height: 1.7; color: rgba(255,255,255,0.3); max-width: 260px; }
 
-  .footer-name {
-    font-family: var(--font-logo);
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: #fefefe;
-    letter-spacing: 0.1em;
-    line-height: 1.1;
-  }
+  .footer h4 { font-family: var(--font-body); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-secondary); margin-bottom: 1.25rem; }
 
-  .footer-tagline {
-    font-family: var(--font-logo);
-    font-size: 0.6rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.22em;
-    color: rgba(254, 254, 254, 0.3);
-    margin-top: 2px;
-  }
+  .footer-col { display: flex; flex-direction: column; gap: 0.4rem; }
+  .footer-col a { color: rgba(255,255,255,0.4); font-size: 0.88rem; padding: 0.1rem 0; }
+  .footer-col a:hover { color: #fff; }
+  .footer-col p { font-size: 0.88rem; color: rgba(255,255,255,0.35); }
 
-  .footer-desc {
-    font-size: 0.88rem;
-    line-height: 1.7;
-    color: rgba(254, 254, 254, 0.3);
-    max-width: 260px;
-  }
-
-  .footer h4 {
-    font-family: var(--font-body);
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--color-secondary);
-    margin-bottom: 1.25rem;
-  }
-
-  .footer-col {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-
-  .footer-col a {
-    color: rgba(254, 254, 254, 0.4);
-    font-size: 0.88rem;
-    padding: 0.1rem 0;
-  }
-
-  .footer-col a:hover {
-    color: #fefefe;
-  }
-
-  .footer-col p {
-    font-size: 0.88rem;
-    color: rgba(254, 254, 254, 0.35);
-  }
-
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 0;
-  }
-
-  .footer-bottom p {
-    font-size: 0.78rem;
-    color: rgba(254, 254, 254, 0.18);
-  }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 0; }
+  .footer-bottom p { font-size: 0.78rem; color: rgba(255,255,255,0.18); }
 
   @media (max-width: 768px) {
-    .footer-top {
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-    }
-
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
     .footer-brand { grid-column: 1 / -1; }
-
-    .footer-bottom {
-      flex-direction: column;
-      gap: 0.25rem;
-      text-align: center;
-    }
+    .footer-bottom { flex-direction: column; gap: 0.25rem; text-align: center; }
   }
 
-  @media (max-width: 480px) {
-    .footer-top { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
 </style>

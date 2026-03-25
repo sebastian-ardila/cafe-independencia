@@ -1,124 +1,137 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
+import ProductCard from '../components/ProductCard.astro';
+import ServiceCard from '../components/ServiceCard.astro';
 
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
 
 const products = [
   {
-    id: 'media-libra',
-    name: 'Media Libra de Cafe',
-    weight: '250g',
-    description: 'Cafe de origen del eje cafetero, tostado artesanal semanal. Perfil con notas de panela, chocolate y frutas.',
-    price: 25000,
+    id: 'cafe-empacado',
+    name: 'Cafe Empacado',
+    description: 'Cafe de origen del eje cafetero. Disponible molido y en grano. Tostion artesanal semanal con notas de panela, chocolate y frutas.',
     image: 'producto-cafe.jpg',
-  },
-  {
-    id: 'libra',
-    name: 'Libra de Cafe',
-    weight: '500g',
-    description: 'Nuestro cafe insignia en presentacion completa. Ideal para el hogar o la oficina. Molido o en grano.',
-    price: 45000,
     popular: true,
-    image: 'producto-cafe.jpg',
+    variants: [
+      { id: 'cafe-250', label: '250g', price: 25000 },
+      { id: 'cafe-454', label: '454g', price: 45000 },
+      { id: 'cafe-2500', label: '2.5kg', price: 220000 },
+    ],
   },
   {
     id: 'cold-brew',
     name: 'Cold Brew',
-    weight: '350ml',
-    description: 'Extraccion en frio por 18 horas. Listo para tomar. Suave, dulce y refrescante. Botella de vidrio.',
-    price: 12000,
+    description: 'Extraccion en frio por 18 horas. Suave, dulce y refrescante. Listo para tomar en botella de vidrio.',
     image: 'producto-cold-brew.jpg',
+    variants: [
+      { id: 'cb-240', label: '240ml', price: 8000 },
+      { id: 'cb-500', label: '500ml', price: 15000 },
+      { id: 'cb-750', label: 'Institucional 750ml', price: 22000 },
+    ],
+  },
+  {
+    id: 'metodos',
+    name: 'Metodos de Preparacion',
+    description: 'Filtros y accesorios para preparar cafe de especialidad en casa. Equipo profesional seleccionado.',
+    image: 'v60-coffee.jpg',
+    variants: [
+      { id: 'prensa', label: 'Prensa Francesa', price: 65000 },
+      { id: 'v60', label: 'V60', price: 45000 },
+      { id: 'chemex', label: 'Chemex', price: 120000 },
+    ],
   },
 ];
 
-const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
+const services = [
+  {
+    name: 'Taller de Barista',
+    description: 'Aprende tecnicas de extraccion, latte art y cata de cafe con nuestros baristas certificados. Sesiones grupales e individuales.',
+    whatsappMessage: 'Hola! Estoy interesado en el Taller de Barista. Me pueden dar mas informacion?',
+  },
+  {
+    name: 'Barra de Cafe para Eventos',
+    description: 'Montamos una barra de cafe de especialidad para tu evento social. Bodas, cumpleanos, reuniones y celebraciones.',
+    whatsappMessage: 'Hola! Quiero cotizar una barra de cafe para un evento social. Me pueden dar mas informacion?',
+  },
+  {
+    name: 'Eventos y Ferias Empresariales',
+    description: 'Acompanamiento profesional en ferias, conferencias y eventos corporativos con servicio de cafe de especialidad.',
+    whatsappMessage: 'Hola! Estoy interesado en el servicio de cafe para eventos/ferias empresariales. Me pueden dar mas informacion?',
+  },
+];
 ---
 
 <Layout title="Inicio">
   <Hero
-    title="Cafe de origen del eje cafetero"
-    subtitle="Tostamos cada semana granos de fincas de Risaralda. Pide tu cafe y te lo llevamos."
+    title="Cafe de especialidad del eje cafetero"
+    subtitle="Tostion artesanal semanal con granos de fincas de Risaralda. Pide directo y te lo llevamos."
     ctaText="Ver productos"
     ctaHref="#productos"
+    secondaryCtaText="Nuestros servicios"
+    secondaryCtaHref="#servicios"
+    backgroundImage="v60-coffee.jpg"
   />
 
-  <!-- Features -->
-  <section class="section features">
+  <!-- Features Strip -->
+  <section class="features">
     <div class="container">
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-num">01</div>
-          <div class="feature-content">
-            <h3>Origen directo</h3>
-            <p>Trabajamos con caficultores de Risaralda, Quindio y Caldas. Precio justo y trazabilidad completa.</p>
-          </div>
+          <span class="feature-num">01</span>
+          <h3>Origen Directo</h3>
+          <p>De fincas del eje cafetero a tu mesa. Risaralda, Quindio y Caldas.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-num">02</div>
-          <div class="feature-content">
-            <h3>Tostion semanal</h3>
-            <p>Pequenos lotes cada semana para garantizar frescura y perfiles de sabor unicos.</p>
-          </div>
+          <span class="feature-num">02</span>
+          <h3>Tostion Semanal</h3>
+          <p>Tostamos en pequenos lotes cada semana para maxima frescura.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-num">03</div>
-          <div class="feature-content">
-            <h3>Pide por WhatsApp</h3>
-            <p>Elegi tus productos, arma tu pedido y te lo llevamos. Asi de simple.</p>
-          </div>
+          <span class="feature-num">03</span>
+          <h3>Envio a Colombia</h3>
+          <p>Arma tu pedido y te lo enviamos. Pago contra entrega o transferencia.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Products + Cart -->
-  <section class="section products-section" id="productos">
+  <!-- Products -->
+  <section class="section" id="productos">
     <div class="container">
-      <div class="products-header">
+      <div class="section-header">
         <span class="section-label">Nuestro cafe</span>
         <h2 class="section-title">Productos</h2>
-        <p class="section-subtitle">Tostado artesanal del eje cafetero, listo para pedir.</p>
+        <p class="section-subtitle">Tostado artesanal del eje cafetero, listo para pedir por WhatsApp.</p>
       </div>
       <div class="products-grid">
-        {products.map((product) => (
-          <div class="product-card" data-product-id={product.id} data-product-name={product.name} data-product-price={product.price}>
-            {product.popular && <div class="popular-badge">Mas vendido</div>}
-            <div class="product-img-wrap">
-              <img src={`${base}${product.image}`} alt={product.name} loading="lazy" />
-            </div>
-            <div class="product-body">
-              <div class="product-info">
-                <h3>{product.name}</h3>
-                <span class="product-weight">{product.weight}</span>
-                <p>{product.description}</p>
-              </div>
-              <div class="product-bottom">
-                <div class="product-price">{formatPrice(product.price)}</div>
-                <div class="quantity-control">
-                  <button class="qty-btn qty-minus" aria-label="Reducir cantidad">&minus;</button>
-                  <span class="qty-value">0</span>
-                  <button class="qty-btn qty-plus" aria-label="Aumentar cantidad">+</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+        {products.map((p) => <ProductCard {...p} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="section section-dark" id="servicios">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Experiencias</span>
+        <h2 class="section-title">Servicios</h2>
+        <p class="section-subtitle">Mas alla del cafe empacado, llevamos la experiencia a tu evento.</p>
+      </div>
+      <div class="services-grid">
+        {services.map((s) => <ServiceCard {...s} />)}
       </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="cta-section">
-    <div class="cta-bg">
-      <div class="cta-orb"></div>
-      <div class="cta-glow"></div>
-    </div>
+    <div class="cta-glow-top"></div>
     <div class="container cta-inner">
-      <span class="section-label cta-label">Pereira, Colombia</span>
+      <span class="section-label" style="color: var(--color-accent)">Pereira, Colombia</span>
       <h2>Listo para probar el mejor cafe de la region?</h2>
-      <p>Arma tu pedido arriba y recibilo directo en tu puerta via WhatsApp.</p>
+      <p>Arma tu pedido arriba o consultanos por un servicio para tu evento.</p>
       <div class="cta-actions">
         <a href="#productos" class="btn btn-primary btn-lg">Ver productos</a>
         <a href={`${base}contacto`} class="btn btn-ghost">Contacto</a>
@@ -131,7 +144,7 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     <div class="cart-summary">
       <div class="cart-info">
         <div class="cart-icon-wrap">
-          <svg class="cart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
           </svg>
@@ -143,7 +156,7 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
         </div>
       </div>
       <button class="btn btn-whatsapp cart-checkout" id="cart-checkout">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
         Pedir por WhatsApp
@@ -154,9 +167,9 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
 </Layout>
 
 <style is:global>
-  /* Features */
+  /* Features Strip */
   .features {
-    padding: 5rem 0;
+    padding: 0;
     background: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
   }
@@ -164,203 +177,103 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
   .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
   }
 
   .feature-card {
-    padding: 2.5rem;
+    padding: 3rem 2.5rem;
     border-right: 1px solid var(--color-border);
     transition: all var(--transition);
   }
 
   .feature-card:last-child { border-right: none; }
-
   .feature-card:hover { background: var(--color-accent-light); }
 
   .feature-num {
     font-family: var(--font-heading);
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 800;
-    color: var(--color-accent);
-    opacity: 0.4;
+    color: var(--color-secondary);
     line-height: 1;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     letter-spacing: -0.04em;
   }
 
-  .feature-content h3 {
-    font-size: 1.2rem;
+  .feature-card h3 {
+    font-size: 1.15rem;
     font-weight: 700;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
     letter-spacing: -0.02em;
   }
 
-  .feature-content p {
-    font-size: 0.9rem;
-    color: var(--color-text-light);
-    line-height: 1.7;
-  }
-
-  /* Products */
-  .products-section {
-    padding: 6rem 0;
-    scroll-margin-top: 5rem;
-  }
-
-  .products-header { text-align: center; }
-
-  .products-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    max-width: 1050px;
-    margin: 0 auto;
-  }
-
-  .product-card {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    transition: all var(--transition);
-    overflow: hidden;
-  }
-
-  .product-card:hover {
-    border-color: rgba(200, 150, 90, 0.15);
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
-  }
-
-  .product-card.selected {
-    border-color: var(--color-secondary);
-    box-shadow: var(--shadow-glow);
-  }
-
-  .popular-badge {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: var(--color-primary);
-    color: var(--color-white);
-    font-size: 0.68rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    padding: 0.4rem 0.9rem;
-    border-radius: var(--radius-full);
-    z-index: 2;
-  }
-
-  .product-img-wrap {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    background: var(--color-bg-warm);
-    position: relative;
-  }
-
-  .product-img-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .product-card:hover .product-img-wrap img {
-    transform: scale(1.05);
-  }
-
-  .product-body {
-    padding: 1.5rem 1.5rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  .product-info { flex: 1; margin-bottom: 1.25rem; }
-
-  .product-info h3 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 0.35rem;
-    letter-spacing: -0.02em;
-  }
-
-  .product-weight {
-    display: inline-block;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--color-secondary);
-    background: var(--color-accent-light);
-    padding: 0.2rem 0.65rem;
-    border-radius: var(--radius-full);
-    margin-bottom: 0.85rem;
-  }
-
-  .product-info p {
+  .feature-card p {
     font-size: 0.9rem;
     color: var(--color-text-light);
     line-height: 1.65;
   }
 
-  .product-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--color-border);
+  /* Section header */
+  .section-header { text-align: center; }
+
+  /* Products */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
 
-  .product-price {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: var(--color-primary);
-    letter-spacing: -0.02em;
+  /* Services */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
   }
 
-  .quantity-control {
-    display: flex;
-    align-items: center;
-    background: var(--color-bg);
-    border-radius: var(--radius-full);
-    border: 1px solid var(--color-border);
+  /* CTA */
+  .cta-section {
+    position: relative;
+    background: var(--color-primary);
+    padding: 7rem 0;
     overflow: hidden;
-  }
-
-  .qty-btn {
-    width: 38px;
-    height: 38px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-text-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all var(--transition-fast);
-    font-family: var(--font-body);
-  }
-
-  .qty-btn:hover {
-    background: var(--color-accent-light);
-    color: var(--color-secondary);
-  }
-
-  .qty-btn:active { transform: scale(0.92); }
-
-  .qty-value {
-    min-width: 32px;
     text-align: center;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--color-primary);
-    font-family: var(--font-heading);
+  }
+
+  .cta-glow-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+    opacity: 0.4;
+  }
+
+  .cta-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 580px;
+  }
+
+  .cta-inner .section-label::before { background: var(--color-accent); }
+
+  .cta-inner h2 {
+    font-size: clamp(2rem, 4vw, 2.75rem);
+    color: var(--color-white);
+    margin-bottom: 1rem;
+    letter-spacing: -0.03em;
+  }
+
+  .cta-inner p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   /* Floating Cart */
@@ -379,9 +292,7 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  .cart-float.visible {
-    transform: translateX(-50%) translateY(0);
-  }
+  .cart-float.visible { transform: translateX(-50%) translateY(0); }
 
   .cart-summary {
     display: flex;
@@ -390,11 +301,7 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     gap: 1rem;
   }
 
-  .cart-info {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-  }
+  .cart-info { display: flex; align-items: center; gap: 0.85rem; }
 
   .cart-icon-wrap {
     position: relative;
@@ -425,25 +332,13 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
   }
 
   .cart-badge.bump { animation: pulse 0.3s ease; }
-
   .cart-details { display: flex; flex-direction: column; }
-
-  .cart-items-text {
-    font-size: 0.78rem;
-    color: rgba(255, 255, 255, 0.45);
-    font-weight: 500;
-  }
-
-  .cart-total {
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--color-white);
-  }
+  .cart-items-text { font-size: 0.78rem; color: rgba(255,255,255,0.45); font-weight: 500; }
+  .cart-total { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 700; color: var(--color-white); }
 
   .cart-checkout {
     padding: 0.75rem 1.5rem;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     border-radius: var(--radius-full);
     white-space: nowrap;
   }
@@ -459,155 +354,54 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
 
   .cart-items-list.show { display: flex; }
 
-  :global(.cart-item-row) {
+  .cart-item-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: rgba(255, 255, 255, 0.6);
   }
 
-  :global(.cart-item-qty) {
-    color: var(--color-accent);
-    font-weight: 600;
-  }
-
-  /* CTA */
-  .cta-section {
-    position: relative;
-    background: var(--color-primary);
-    padding: 7rem 0;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  .cta-bg { position: absolute; inset: 0; }
-
-  .cta-orb {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(200, 150, 90, 0.1), transparent 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    filter: blur(80px);
-  }
-
-  .cta-glow {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
-    opacity: 0.3;
-  }
-
-  .cta-inner {
-    position: relative;
-    z-index: 1;
-    max-width: 580px;
-  }
-
-  .cta-label { color: var(--color-accent) !important; }
-  .cta-label::before { background: var(--color-accent) !important; }
-
-  .cta-inner h2 {
-    font-size: 2.75rem;
-    color: var(--color-bg);
-    margin-bottom: 1rem;
-    letter-spacing: -0.03em;
-  }
-
-  .cta-inner p {
-    color: rgba(254, 254, 254, 0.4);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 2.5rem;
-  }
-
-  .cta-actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .btn-lg {
-    padding: 1.1rem 2.5rem;
-    font-size: 0.95rem;
-  }
-
-  .btn-ghost {
-    background: transparent;
-    color: rgba(254, 254, 254, 0.5);
-    border: 1px solid rgba(254, 254, 254, 0.1);
-    padding: 1.1rem 2.5rem;
-    border-radius: var(--radius-full);
-    font-weight: 500;
-    font-size: 0.95rem;
-    font-family: var(--font-body);
-    cursor: pointer;
-    transition: all var(--transition);
-  }
-
-  .btn-ghost:hover {
-    color: #fefefe;
-    border-color: rgba(254, 254, 254, 0.25);
-  }
+  .cart-item-qty { color: var(--color-accent); font-weight: 600; }
 
   @media (max-width: 768px) {
     .features-grid { grid-template-columns: 1fr; }
-
-    .feature-card {
-      border-right: none;
-      border-bottom: 1px solid var(--color-border);
-      padding: 2rem;
-    }
-
+    .feature-card { border-right: none; border-bottom: 1px solid var(--color-border); padding: 2rem; }
     .feature-card:last-child { border-bottom: none; }
-
-    .products-grid {
-      grid-template-columns: 1fr;
-      max-width: 400px;
-    }
-
-    .product-card { padding: 2rem 1.5rem 1.5rem; }
-
-    .cart-float {
-      bottom: 1rem;
-      width: calc(100% - 2rem);
-      padding: 1rem 1.25rem;
-      border-radius: var(--radius-lg);
-    }
-
+    .products-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+    .services-grid { grid-template-columns: 1fr; }
+    .cart-float { bottom: 1rem; width: calc(100% - 2rem); padding: 1rem 1.25rem; border-radius: var(--radius-lg); }
     .cart-summary { flex-wrap: wrap; }
     .cart-checkout { width: 100%; margin-top: 0.5rem; }
-
     .cta-inner h2 { font-size: 2rem; }
   }
 
   @media (max-width: 1024px) {
     .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 640px) {
-    .products-grid {
-      grid-template-columns: 1fr;
-      max-width: 400px;
-    }
+    .products-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
   }
 </style>
 
 <script>
   const WHATSAPP_NUMBER = '573023231629';
-  const cart: Record<string, { name: string; price: number; qty: number }> = {};
 
-  function updateUI() {
-    const totalItems = Object.values(cart).reduce((sum, item) => sum + item.qty, 0);
-    const totalPrice = Object.values(cart).reduce((sum, item) => sum + item.qty * item.price, 0);
+  interface CartItem {
+    productName: string;
+    variantLabel: string;
+    price: number;
+    qty: number;
+  }
+
+  const cart: Record<string, CartItem> = {};
+
+  function updateGlobalUI() {
+    const items = Object.values(cart);
+    const totalItems = items.reduce((s, i) => s + i.qty, 0);
+    const totalPrice = items.reduce((s, i) => s + i.qty * i.price, 0);
 
     const badge = document.getElementById('cart-badge');
     if (badge) {
@@ -622,8 +416,7 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
 
     const itemsText = document.getElementById('cart-items-text');
     if (itemsText) {
-      itemsText.textContent = totalItems === 0 ? 'Tu pedido' :
-        totalItems === 1 ? '1 producto' : totalItems + ' productos';
+      itemsText.textContent = totalItems === 0 ? 'Tu pedido' : totalItems === 1 ? '1 producto' : totalItems + ' productos';
     }
 
     const cartFloat = document.getElementById('cart-float');
@@ -633,65 +426,103 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     if (listEl) {
       listEl.innerHTML = '';
       listEl.classList.toggle('show', totalItems > 0);
-      for (const [, item] of Object.entries(cart)) {
+      for (const item of Object.values(cart)) {
         if (item.qty > 0) {
           const row = document.createElement('div');
           row.className = 'cart-item-row';
-          row.innerHTML = `<span>${item.name}</span><span class="cart-item-qty">${item.qty}x $${(item.price * item.qty).toLocaleString('es-CO')}</span>`;
+          row.innerHTML = `<span>${item.productName} (${item.variantLabel})</span><span class="cart-item-qty">${item.qty}x $${(item.price * item.qty).toLocaleString('es-CO')}</span>`;
           listEl.appendChild(row);
         }
       }
     }
 
     document.querySelectorAll('.product-card').forEach(card => {
-      const id = card.getAttribute('data-product-id');
-      if (id && cart[id]) card.classList.toggle('selected', cart[id].qty > 0);
+      const variants = JSON.parse(card.getAttribute('data-variants') || '[]');
+      const hasItems = variants.some((v: any) => cart[v.id] && cart[v.id].qty > 0);
+      card.classList.toggle('selected', hasItems);
     });
   }
 
   document.querySelectorAll('.product-card').forEach(card => {
-    const id = card.getAttribute('data-product-id');
-    const name = card.getAttribute('data-product-name') || '';
-    const price = parseInt(card.getAttribute('data-product-price') || '0');
+    const productName = card.getAttribute('data-product-name') || '';
+    const variants = JSON.parse(card.getAttribute('data-variants') || '[]');
+    const chips = card.querySelectorAll('.variant-chip');
+    const priceDisplay = card.querySelector('[data-price-display]');
     const qtyEl = card.querySelector('.qty-value');
-    const minusBtn = card.querySelector('.qty-minus');
     const plusBtn = card.querySelector('.qty-plus');
+    const minusBtn = card.querySelector('.qty-minus');
 
-    if (!id || !qtyEl || !minusBtn || !plusBtn) return;
+    if (!qtyEl || !plusBtn || !minusBtn || variants.length === 0) return;
 
-    cart[id] = { name, price, qty: 0 };
+    let selectedVariantId = variants[0].id;
+
+    function getSelectedVariant() {
+      return variants.find((v: any) => v.id === selectedVariantId);
+    }
+
+    function updateQtyDisplay() {
+      const item = cart[selectedVariantId];
+      qtyEl!.textContent = String(item ? item.qty : 0);
+    }
+
+    chips.forEach((chip: Element) => {
+      chip.addEventListener('click', () => {
+        chips.forEach((c: Element) => c.classList.remove('active'));
+        chip.classList.add('active');
+
+        selectedVariantId = chip.getAttribute('data-variant-id') || '';
+        const price = parseInt(chip.getAttribute('data-price') || '0');
+
+        if (priceDisplay) {
+          priceDisplay.textContent = '$' + price.toLocaleString('es-CO');
+        }
+
+        updateQtyDisplay();
+      });
+    });
 
     plusBtn.addEventListener('click', () => {
-      cart[id].qty++;
-      qtyEl.textContent = String(cart[id].qty);
-      updateUI();
+      const v = getSelectedVariant();
+      if (!v) return;
+
+      if (!cart[selectedVariantId]) {
+        const activeChip = card.querySelector('.variant-chip.active');
+        cart[selectedVariantId] = {
+          productName,
+          variantLabel: activeChip?.getAttribute('data-label') || v.label,
+          price: v.price,
+          qty: 0,
+        };
+      }
+      cart[selectedVariantId].qty++;
+      updateQtyDisplay();
+      updateGlobalUI();
     });
 
     minusBtn.addEventListener('click', () => {
-      if (cart[id].qty > 0) {
-        cart[id].qty--;
-        qtyEl.textContent = String(cart[id].qty);
-        updateUI();
-      }
+      if (!cart[selectedVariantId] || cart[selectedVariantId].qty <= 0) return;
+      cart[selectedVariantId].qty--;
+      if (cart[selectedVariantId].qty === 0) delete cart[selectedVariantId];
+      updateQtyDisplay();
+      updateGlobalUI();
     });
   });
 
   const checkoutBtn = document.getElementById('cart-checkout');
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', () => {
-      const items = Object.values(cart).filter(item => item.qty > 0);
+      const items = Object.values(cart).filter(i => i.qty > 0);
       if (items.length === 0) return;
 
-      const total = items.reduce((sum, item) => sum + item.qty * item.price, 0);
+      const total = items.reduce((s, i) => s + i.qty * i.price, 0);
 
-      let message = 'Hola! Quiero hacer un pedido:\n\n';
-      items.forEach(item => {
-        message += `- ${item.name} x${item.qty} - $${(item.price * item.qty).toLocaleString('es-CO')}\n`;
+      let msg = 'Hola! Quiero hacer un pedido:\n\n';
+      items.forEach(i => {
+        msg += `- ${i.productName} (${i.variantLabel}) x${i.qty} - $${(i.price * i.qty).toLocaleString('es-CO')}\n`;
       });
-      message += `\n*Total: $${total.toLocaleString('es-CO')}*`;
+      msg += `\n*Total: $${total.toLocaleString('es-CO')}*`;
 
-      const encoded = encodeURIComponent(message);
-      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`, '_blank');
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
     });
   }
 </script>
