@@ -1,93 +1,79 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-import MenuCard from '../components/MenuCard.astro';
 
 const rawBase = import.meta.env.BASE_URL;
 const base = rawBase.endsWith('/') ? rawBase : rawBase + '/';
-
-const destacados = [
-  { name: 'Espresso Doble', description: 'Shot doble de nuestro blend con notas de panela y chocolate.', price: '$5.500' },
-  { name: 'V60 de Origen', description: 'Pour over con café de fincas del eje cafetero. Rotación semanal.', price: '$8.000' },
-  { name: 'Tostada de Aguacate', description: 'Pan artesanal, aguacate Hass, tomate cherry, semillas y limón.', price: '$14.000' },
-  { name: 'Cold Brew Tónica', description: 'Cold brew con agua tónica, hielo y un twist de naranja.', price: '$11.000' },
-  { name: 'Flat White', description: 'Doble espresso con microespuma sedosa de leche.', price: '$7.500' },
-  { name: 'Brownie', description: 'Chocolate belga, textura húmeda. Servido tibio.', price: '$7.500' },
-];
-
-const stats = [
-  { number: '100%', label: 'Café colombiano' },
-  { number: '8+', label: 'Fincas aliadas' },
-  { number: '2019', label: 'Desde' },
-];
 ---
 
 <Layout title="Inicio">
   <Hero
-    title="Café de origen en el corazón de Pereira"
-    subtitle="Tostamos semanalmente granos de fincas del eje cafetero. Cada taza es trazable, fresca y única."
-    ctaText="Ver nuestra carta"
-    ctaHref={`${base}menu`}
+    title="Café de origen del eje cafetero"
+    subtitle="Tostamos cada semana granos de fincas de Risaralda. Pedí tu café y te lo llevamos."
+    ctaText="Ver productos &rarr;"
+    ctaHref={`${base}productos`}
   />
 
-  <!-- Stats bar -->
-  <section class="stats-bar">
-    <div class="container stats-inner">
-      {stats.map((stat) => (
-        <div class="stat">
-          <span class="stat-number">{stat.number}</span>
-          <span class="stat-label">{stat.label}</span>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Bento Values -->
-  <section class="section">
+  <!-- Features -->
+  <section class="section features">
     <div class="container">
-      <div class="section-header">
-        <span class="section-label">Lo que nos define</span>
-        <h2 class="section-title">Café con propósito</h2>
-        <p class="section-subtitle">Cada taza es un vínculo directo con los caficultores de Risaralda.</p>
-      </div>
-      <div class="bento-grid">
-        <div class="bento-card bento-lg">
-          <div class="bento-icon">&#9752;</div>
-          <h3>Origen Directo</h3>
-          <p>Trabajamos con fincas de Risaralda, Quindío y Caldas. Compramos a precio justo y trazamos cada lote desde la finca hasta tu taza.</p>
-          <div class="bento-tag">Trazabilidad total</div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-num">01</div>
+          <div class="feature-content">
+            <h3>Origen directo</h3>
+            <p>Trabajamos con caficultores de Risaralda, Quindío y Caldas. Precio justo y trazabilidad completa.</p>
+          </div>
         </div>
-        <div class="bento-card">
-          <div class="bento-icon">&#9878;</div>
-          <h3>Tostión Semanal</h3>
-          <p>Tostamos en pequeños lotes cada semana para resaltar los perfiles únicos de cada café.</p>
+        <div class="feature-card">
+          <div class="feature-num">02</div>
+          <div class="feature-content">
+            <h3>Tostión semanal</h3>
+            <p>Pequeños lotes cada semana para garantizar frescura y perfiles de sabor únicos.</p>
+          </div>
         </div>
-        <div class="bento-card">
-          <div class="bento-icon">&#9889;</div>
-          <h3>Espacio para Crear</h3>
-          <p>WiFi rápido, enchufes, buena música y el ambiente perfecto para trabajar o desconectar.</p>
-        </div>
-        <div class="bento-card bento-accent">
-          <div class="bento-quote">"El mejor café empieza en la finca"</div>
-          <div class="bento-attr">Eje Cafetero, Colombia</div>
+        <div class="feature-card">
+          <div class="feature-num">03</div>
+          <div class="feature-content">
+            <h3>Pedí por WhatsApp</h3>
+            <p>Elegí tus productos, armá tu pedido y te lo llevamos. Así de simple.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Destacados -->
-  <section class="section section-featured">
+  <!-- Products Preview -->
+  <section class="section products-preview">
     <div class="container">
-      <span class="section-label">Favoritos de la casa</span>
-      <h2 class="section-title">Destacados</h2>
-      <p class="section-subtitle">Lo más pedido por quienes nos visitan cada día.</p>
-      <div class="featured-grid">
-        {destacados.map((item) => (
-          <MenuCard {...item} />
-        ))}
+      <div class="preview-header">
+        <span class="section-label">Nuestro café</span>
+        <h2 class="section-title">Productos</h2>
+        <p class="section-subtitle">Tostado artesanal del eje cafetero, listo para pedir.</p>
       </div>
-      <div class="featured-cta">
-        <a href={`${base}menu`} class="btn btn-outline">Ver carta completa &rarr;</a>
+      <div class="preview-cards">
+        <div class="preview-card">
+          <div class="preview-icon">&#9749;</div>
+          <h3>Media Libra</h3>
+          <span class="preview-weight">250g</span>
+          <div class="preview-price">$25.000</div>
+        </div>
+        <div class="preview-card preview-featured">
+          <div class="preview-badge">Popular</div>
+          <div class="preview-icon">&#9749;&#9749;</div>
+          <h3>Libra de Café</h3>
+          <span class="preview-weight">500g</span>
+          <div class="preview-price">$45.000</div>
+        </div>
+        <div class="preview-card">
+          <div class="preview-icon">&#129380;</div>
+          <h3>Cold Brew</h3>
+          <span class="preview-weight">350ml</span>
+          <div class="preview-price">$12.000</div>
+        </div>
+      </div>
+      <div class="preview-cta">
+        <a href={`${base}productos`} class="btn btn-primary">Pedir ahora &rarr;</a>
       </div>
     </div>
   </section>
@@ -96,176 +82,181 @@ const stats = [
   <section class="cta-section">
     <div class="cta-bg">
       <div class="cta-orb"></div>
+      <div class="cta-glow"></div>
     </div>
     <div class="container cta-inner">
-      <span class="section-label" style="color: var(--color-accent);">Te esperamos</span>
-      <h2>Ven a conocernos</h2>
-      <p>Centro de Pereira. Pasa por un café, quédate a trabajar o disfruta el momento.</p>
+      <span class="section-label cta-label">Pereira, Colombia</span>
+      <h2>¿Listo para probar el mejor café de la región?</h2>
+      <p>Elegí tus productos, armá tu pedido y recibilo directo en tu puerta.</p>
       <div class="cta-actions">
-        <a href={`${base}contacto`} class="btn btn-primary">Cómo llegar &rarr;</a>
-        <a href={`${base}menu`} class="btn btn-ghost">Ver carta</a>
+        <a href={`${base}productos`} class="btn btn-whatsapp btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+          </svg>
+          Pedir por WhatsApp
+        </a>
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  /* Stats */
-  .stats-bar {
-    background: var(--color-bg-warm);
+  /* Features */
+  .features {
+    padding: 5rem 0;
+    background: var(--color-surface);
     border-bottom: 1px solid var(--color-border);
-    padding: 2.5rem 0;
   }
 
-  .stats-inner {
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
-  }
-
-  .stat {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.25rem;
-  }
-
-  .stat-number {
-    font-family: var(--font-heading);
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--color-primary);
-    letter-spacing: -0.03em;
-  }
-
-  .stat-label {
-    font-size: 0.8rem;
-    color: var(--color-text-muted);
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  /* Section header */
-  .section-header {
-    text-align: center;
-    margin-bottom: 1rem;
-  }
-
-  /* Bento Grid */
-  .bento-grid {
+  .features-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 1.25rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
   }
 
-  .bento-card {
-    background: var(--color-white);
+  .feature-card {
+    padding: 2.5rem;
+    border-right: 1px solid var(--color-border);
+    transition: all var(--transition);
+  }
+
+  .feature-card:last-child {
+    border-right: none;
+  }
+
+  .feature-card:hover {
+    background: var(--color-accent-light);
+  }
+
+  .feature-num {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.04em;
+  }
+
+  .feature-content h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.02em;
+  }
+
+  .feature-content p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+
+  /* Products Preview */
+  .products-preview {
+    padding: 7rem 0;
+  }
+
+  .preview-header {
+    text-align: center;
+  }
+
+  .preview-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    align-items: stretch;
+  }
+
+  .preview-card {
+    background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: 2.5rem;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     transition: all var(--transition);
     position: relative;
-    overflow: hidden;
   }
 
-  .bento-card:hover {
-    border-color: rgba(212, 160, 90, 0.2);
-    box-shadow: var(--shadow-md);
-    transform: translateY(-3px);
-  }
-
-  .bento-lg {
-    grid-row: 1 / 3;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .bento-accent {
-    background: var(--color-primary);
-    border-color: transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  .bento-accent:hover {
-    border-color: transparent;
+  .preview-card:hover {
+    transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
+    border-color: rgba(200, 150, 90, 0.15);
   }
 
-  .bento-icon {
+  .preview-featured {
+    border-color: var(--color-secondary);
+    box-shadow: var(--shadow-glow);
+    transform: scale(1.04);
+  }
+
+  .preview-featured:hover {
+    transform: scale(1.04) translateY(-6px);
+    border-color: var(--color-secondary);
+  }
+
+  .preview-badge {
+    position: absolute;
+    top: -12px;
+    background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+    color: var(--color-white);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.35rem 1rem;
+    border-radius: var(--radius-full);
+  }
+
+  .preview-icon {
     font-size: 2rem;
-    margin-bottom: 1.25rem;
-    width: 56px;
-    height: 56px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: var(--color-accent-light);
     border-radius: 16px;
+    margin-bottom: 1.25rem;
   }
 
-  .bento-card h3 {
-    font-size: 1.35rem;
-    margin-bottom: 0.75rem;
-    letter-spacing: -0.02em;
+  .preview-card h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
   }
 
-  .bento-card p {
-    color: var(--color-text-light);
-    font-size: 0.95rem;
-    line-height: 1.7;
-  }
-
-  .bento-tag {
-    display: inline-flex;
-    margin-top: 1.5rem;
-    padding: 0.4rem 1rem;
-    background: var(--color-accent-light);
-    color: var(--color-secondary);
+  .preview-weight {
     font-size: 0.75rem;
     font-weight: 600;
-    border-radius: 100px;
-    letter-spacing: 0.02em;
+    color: var(--color-secondary);
+    background: var(--color-accent-light);
+    padding: 0.15rem 0.6rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1rem;
   }
 
-  .bento-quote {
+  .preview-price {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-accent);
-    line-height: 1.3;
-    font-style: italic;
-    margin-bottom: 0.75rem;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: -0.03em;
   }
 
-  .bento-attr {
-    font-size: 0.8rem;
-    color: rgba(254, 254, 254, 0.35);
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    font-weight: 500;
-  }
-
-  /* Featured */
-  .section-featured {
-    background: var(--color-bg-warm);
-  }
-
-  .featured-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-  }
-
-  .featured-cta {
+  .preview-cta {
     text-align: center;
     margin-top: 3rem;
+  }
+
+  .btn-lg {
+    padding: 1.1rem 2.5rem;
+    font-size: 0.95rem;
   }
 
   /* CTA */
@@ -280,7 +271,6 @@ const stats = [
   .cta-bg {
     position: absolute;
     inset: 0;
-    overflow: hidden;
   }
 
   .cta-orb {
@@ -288,32 +278,47 @@ const stats = [
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(212, 160, 90, 0.15), transparent 70%);
+    background: radial-gradient(circle, rgba(200, 150, 90, 0.1), transparent 70%);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    filter: blur(60px);
+    filter: blur(80px);
+  }
+
+  .cta-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+    opacity: 0.3;
   }
 
   .cta-inner {
     position: relative;
     z-index: 1;
-    max-width: 550px;
+    max-width: 580px;
   }
 
-  .cta-inner .section-label::before {
-    background: var(--color-accent);
+  .cta-label {
+    color: var(--color-accent) !important;
+  }
+
+  .cta-label::before {
+    background: var(--color-accent) !important;
   }
 
   .cta-inner h2 {
-    font-size: 3rem;
-    color: #fefefe;
+    font-size: 2.75rem;
+    color: var(--color-bg);
     margin-bottom: 1rem;
     letter-spacing: -0.03em;
+    line-height: 1.1;
   }
 
   .cta-inner p {
-    color: rgba(254, 254, 254, 0.45);
+    color: rgba(254, 254, 254, 0.4);
     font-size: 1.05rem;
     line-height: 1.7;
     margin-bottom: 2.5rem;
@@ -323,55 +328,36 @@ const stats = [
     display: flex;
     gap: 1rem;
     justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .btn-ghost {
-    background: transparent;
-    color: rgba(254, 254, 254, 0.6);
-    border: 1px solid rgba(254, 254, 254, 0.12);
-    padding: 1rem 2rem;
-    border-radius: 100px;
-    font-weight: 500;
-    font-size: 0.88rem;
-    font-family: var(--font-body);
-    cursor: pointer;
-    transition: all var(--transition);
-  }
-
-  .btn-ghost:hover {
-    color: #fefefe;
-    border-color: rgba(254, 254, 254, 0.3);
-    background: rgba(254, 254, 254, 0.05);
   }
 
   @media (max-width: 768px) {
-    .stats-inner {
-      gap: 2.5rem;
-    }
-
-    .stat-number {
-      font-size: 1.5rem;
-    }
-
-    .bento-grid {
+    .features-grid {
       grid-template-columns: 1fr;
     }
 
-    .bento-lg {
-      grid-row: auto;
-    }
-
-    .bento-card {
+    .feature-card {
+      border-right: none;
+      border-bottom: 1px solid var(--color-border);
       padding: 2rem;
     }
 
-    .featured-grid {
+    .feature-card:last-child { border-bottom: none; }
+
+    .preview-cards {
       grid-template-columns: 1fr;
+      max-width: 360px;
+    }
+
+    .preview-featured {
+      transform: none;
+    }
+
+    .preview-featured:hover {
+      transform: translateY(-6px);
     }
 
     .cta-inner h2 {
-      font-size: 2.25rem;
+      font-size: 2rem;
     }
   }
 </style>
