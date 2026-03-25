@@ -1,0 +1,213 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<Layout title="Contacto" description="Visítanos en el centro de Pereira. Horarios, ubicación y formas de contacto.">
+  <Hero
+    title="Visítanos"
+    subtitle="En el corazón de Pereira, te esperamos con un café recién preparado"
+    compact
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-layout">
+        <!-- Info Cards -->
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-icon">&#128205;</div>
+            <div class="info-content">
+              <span class="info-label">Dirección</span>
+              <h3>Cra 7 # 19-32, Centro</h3>
+              <p>Pereira, Risaralda<br/>Colombia</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">&#128338;</div>
+            <div class="info-content">
+              <span class="info-label">Horario</span>
+              <div class="hours">
+                <div class="hours-row">
+                  <span>Lunes a Viernes</span>
+                  <span class="hours-time">7:00 — 20:00</span>
+                </div>
+                <div class="hours-row">
+                  <span>Sábados</span>
+                  <span class="hours-time">8:00 — 21:00</span>
+                </div>
+                <div class="hours-row">
+                  <span>Domingos</span>
+                  <span class="hours-time">9:00 — 18:00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">&#128222;</div>
+            <div class="info-content">
+              <span class="info-label">Contacto</span>
+              <p>Tel: (606) 335-1234</p>
+              <p>WhatsApp: +57 316 456 7890</p>
+              <p>hola@cafeindependencia.co</p>
+            </div>
+          </div>
+
+          <div class="info-card info-card-accent">
+            <div class="info-content">
+              <span class="info-label" style="color: var(--color-accent);">Redes Sociales</span>
+              <p class="social-handle">@cafeindependencia</p>
+              <p class="social-sub">Síguenos en Instagram</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Map -->
+        <div class="map-card">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.5!2d-75.69!3d4.81!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwNDgnMzYuMCJOIDc1wrA0MScyNC4wIlc!5e0!3m2!1ses!2sco!4v1"
+            width="100%"
+            height="100%"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Ubicación de Café Independencia en Pereira"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .info-cards {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .info-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    display: flex;
+    gap: 1.25rem;
+    transition: all var(--transition);
+  }
+
+  .info-card:hover {
+    border-color: rgba(212, 160, 90, 0.2);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .info-card-accent {
+    background: var(--color-primary);
+  }
+
+  .info-card-accent:hover {
+    border-color: transparent;
+  }
+
+  .info-icon {
+    font-size: 1.5rem;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-light);
+    border-radius: 14px;
+    flex-shrink: 0;
+  }
+
+  .info-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-secondary);
+    margin-bottom: 0.5rem;
+  }
+
+  .info-content h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .info-content p {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .info-card-accent p {
+    color: rgba(254, 254, 254, 0.5);
+  }
+
+  .social-handle {
+    font-family: var(--font-heading);
+    font-size: 1.3rem !important;
+    font-weight: 700;
+    color: var(--color-accent) !important;
+    margin-bottom: 0.25rem;
+  }
+
+  .social-sub {
+    font-size: 0.85rem !important;
+  }
+
+  .hours {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    gap: 1rem;
+  }
+
+  .hours-time {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .map-card {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--color-border);
+    min-height: 100%;
+    aspect-ratio: auto;
+  }
+
+  .map-card iframe {
+    min-height: 540px;
+  }
+
+  @media (max-width: 768px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .map-card iframe {
+      min-height: 350px;
+    }
+  }
+</style>

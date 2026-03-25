@@ -1,0 +1,235 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  ctaText?: string;
+  ctaHref?: string;
+  compact?: boolean;
+}
+
+const { title, subtitle, ctaText, ctaHref, compact = false } = Astro.props;
+const base = import.meta.env.BASE_URL;
+---
+
+<section class:list={['hero', { compact }]}>
+  <div class="hero-bg">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-noise"></div>
+  </div>
+  <div class="container hero-content">
+    <div class="hero-pill animate-in">
+      <span class="pill-dot"></span>
+      Pereira, Colombia
+    </div>
+    <h1 class="animate-in delay-1">{title}</h1>
+    <p class="animate-in delay-2">{subtitle}</p>
+    {ctaText && ctaHref && (
+      <div class="hero-actions animate-in delay-3">
+        <a href={ctaHref} class="btn btn-primary">{ctaText}</a>
+        <a href={`${base}contacto`} class="btn btn-ghost">Visítanos</a>
+      </div>
+    )}
+  </div>
+  {!compact && (
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+    </div>
+  )}
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero.compact {
+    min-height: 50vh;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: #0a0a0a;
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+  }
+
+  .hero-orb-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212, 160, 90, 0.25), transparent 70%);
+    top: -20%;
+    right: -10%;
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .hero-orb-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(192, 138, 62, 0.2), transparent 70%);
+    bottom: -10%;
+    left: -5%;
+    animation: float 10s ease-in-out infinite reverse;
+  }
+
+  .hero-orb-3 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(240, 201, 135, 0.1), transparent 70%);
+    top: 40%;
+    left: 30%;
+    animation: float 12s ease-in-out infinite;
+  }
+
+  .hero-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.3;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.4'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+
+  .hero-content {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+    max-width: 800px;
+    padding: 2rem 0;
+  }
+
+  .hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-secondary);
+    background: rgba(212, 160, 90, 0.08);
+    border: 1px solid rgba(212, 160, 90, 0.15);
+    padding: 0.5rem 1.5rem;
+    border-radius: 100px;
+    margin-bottom: 2.5rem;
+    backdrop-filter: blur(12px);
+  }
+
+  .pill-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-secondary);
+    animation: float 2s ease-in-out infinite;
+  }
+
+  .compact .hero-pill {
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-content h1 {
+    font-size: 5rem;
+    color: #fefefe;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+  }
+
+  .compact .hero-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .hero-content p {
+    font-size: 1.15rem;
+    color: rgba(254, 254, 254, 0.5);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: rgba(254, 254, 254, 0.6);
+    border: 1px solid rgba(254, 254, 254, 0.12);
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    font-weight: 500;
+    font-size: 0.88rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: all var(--transition);
+  }
+
+  .btn-ghost:hover {
+    color: #fefefe;
+    border-color: rgba(254, 254, 254, 0.3);
+    background: rgba(254, 254, 254, 0.05);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--color-secondary), transparent);
+    animation: float 2s ease-in-out infinite;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 85vh;
+    }
+
+    .hero.compact {
+      min-height: 40vh;
+    }
+
+    .hero-content h1 {
+      font-size: 2.75rem;
+    }
+
+    .compact .hero-content h1 {
+      font-size: 2.25rem;
+    }
+
+    .hero-content p {
+      font-size: 1rem;
+    }
+
+    .hero-orb-1 {
+      width: 300px;
+      height: 300px;
+    }
+
+    .hero-orb-2 {
+      width: 200px;
+      height: 200px;
+    }
+  }
+</style>

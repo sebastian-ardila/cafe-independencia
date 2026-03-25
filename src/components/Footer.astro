@@ -1,0 +1,176 @@
+---
+const base = import.meta.env.BASE_URL;
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src={`${base}cafe_independencia_logo_2.png`} alt="Café Independencia" class="footer-logo-img" />
+          <div class="footer-logo-text">
+            <span class="footer-name">Independencia</span>
+            <span class="footer-tagline">café de especialidad</span>
+          </div>
+        </div>
+        <p class="footer-desc">Café de origen, tostado artesanal y el mejor ambiente en el corazón de Pereira.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navegar</h4>
+        <a href={`${base}`}>Inicio</a>
+        <a href={`${base}menu`}>Carta</a>
+        <a href={`${base}contacto`}>Contacto</a>
+      </div>
+      <div class="footer-col">
+        <h4>Visítanos</h4>
+        <p>Cra 7 # 19-32, Centro</p>
+        <p>Pereira, Risaralda</p>
+        <p>Colombia</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <p>Tel: (606) 335-1234</p>
+        <p>WhatsApp: +57 316 456 7890</p>
+        <p>@cafeindependencia</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {year} Café Independencia</p>
+      <p>Hecho con amor en Pereira</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-primary);
+    color: rgba(254, 254, 254, 0.6);
+    padding-top: 5rem;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-logo-img {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    filter: invert(1);
+    opacity: 0.9;
+  }
+
+  .footer-logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .footer-name {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #fefefe;
+    line-height: 1.1;
+  }
+
+  .footer-tagline {
+    font-size: 0.58rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: rgba(254, 254, 254, 0.3);
+    margin-top: 3px;
+  }
+
+  .footer-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: rgba(254, 254, 254, 0.35);
+    max-width: 280px;
+  }
+
+  .footer h4 {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-secondary);
+    margin-bottom: 1.25rem;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .footer-col a {
+    color: rgba(254, 254, 254, 0.45);
+    font-size: 0.9rem;
+    transition: all var(--transition-fast);
+    padding: 0.15rem 0;
+  }
+
+  .footer-col a:hover {
+    color: #fefefe;
+    padding-left: 0.25rem;
+  }
+
+  .footer-col p {
+    font-size: 0.9rem;
+    color: rgba(254, 254, 254, 0.4);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.75rem 0;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+    color: rgba(254, 254, 254, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding-top: 3.5rem;
+    }
+
+    .footer-top {
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      gap: 0.25rem;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

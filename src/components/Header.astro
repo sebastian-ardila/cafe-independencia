@@ -1,0 +1,241 @@
+---
+const currentPath = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
+---
+
+<header class="header" id="site-header">
+  <div class="container header-inner">
+    <a href={`${base}`} class="logo">
+      <img src={`${base}cafe_independencia_logo_2.png`} alt="Café Independencia" class="logo-img" />
+      <div class="logo-text">
+        <span class="logo-name">INDEPENDENCIA</span>
+        <span class="logo-tagline">café de especialidad</span>
+      </div>
+    </a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" id="menu-toggle">
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="nav" id="main-nav">
+      <a href={`${base}`} class:list={[{ active: currentPath === base || currentPath === base.slice(0, -1) }]}>Inicio</a>
+      <a href={`${base}menu`} class:list={[{ active: currentPath.includes('/menu') }]}>Carta</a>
+      <a href={`${base}contacto`} class:list={[{ active: currentPath.includes('/contacto') }]}>Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    background: rgba(254, 254, 254, 0.8);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid transparent;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .header.scrolled {
+    background: rgba(254, 254, 254, 0.95);
+    border-bottom-color: var(--color-border);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: transform var(--transition);
+  }
+
+  .logo:hover {
+    transform: scale(1.02);
+  }
+
+  .logo-img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    transition: transform var(--transition);
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+
+  .logo-name {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: 0.12em;
+    line-height: 1.1;
+  }
+
+  .logo-tagline {
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.84rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    margin-top: 4px;
+    display: block;
+    width: 100%;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav a {
+    font-weight: 500;
+    font-size: 0.88rem;
+    color: var(--color-text-light);
+    padding: 0.5rem 1.25rem;
+    border-radius: 100px;
+    transition: all var(--transition-fast);
+    position: relative;
+  }
+
+  .nav a:hover {
+    color: var(--color-primary);
+    background: var(--color-accent-light);
+  }
+
+  .nav a.active {
+    color: var(--color-primary);
+    background: var(--color-accent-light);
+    font-weight: 600;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.75rem;
+    border-radius: 12px;
+    z-index: 101;
+    transition: background var(--transition-fast);
+  }
+
+  .menu-toggle:hover {
+    background: var(--color-accent-light);
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background-color: var(--color-primary);
+    border-radius: 2px;
+    transition: all 0.3s;
+    transform-origin: center;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(2.8px, 2.8px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    transform: rotate(-45deg) translate(2.8px, -2.8px);
+  }
+
+  @media (max-width: 768px) {
+    .header-inner {
+      height: 4.5rem;
+    }
+
+    .logo-img {
+      width: 56px;
+      height: 56px;
+    }
+
+    .logo-name {
+      font-size: 1.2rem;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+
+    .nav {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(254, 254, 254, 0.98);
+      backdrop-filter: blur(24px);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 100;
+    }
+
+    .nav.open {
+      display: flex;
+    }
+
+    .nav a {
+      font-size: 1.75rem;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      padding: 0.75rem 2rem;
+      color: var(--color-primary);
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      background: var(--color-accent-light);
+    }
+  }
+</style>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const nav = document.getElementById('main-nav');
+  const header = document.getElementById('site-header');
+
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      toggle.classList.toggle('active');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+  }
+</script>
