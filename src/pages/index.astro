@@ -49,16 +49,19 @@ const services = [
     name: 'Taller de Barista',
     description: 'Aprende tecnicas de extraccion, latte art y cata de cafe con nuestros baristas certificados. Sesiones grupales e individuales.',
     whatsappMessage: 'Hola! Estoy interesado en el Taller de Barista. Me pueden dar mas informacion?',
+    image: 'servicio-taller.jpg',
   },
   {
     name: 'Barra de Cafe para Eventos',
     description: 'Montamos una barra de cafe de especialidad para tu evento social. Bodas, cumpleanos, reuniones y celebraciones.',
     whatsappMessage: 'Hola! Quiero cotizar una barra de cafe para un evento social. Me pueden dar mas informacion?',
+    image: 'servicio-eventos.jpg',
   },
   {
     name: 'Eventos y Ferias Empresariales',
     description: 'Acompanamiento profesional en ferias, conferencias y eventos corporativos con servicio de cafe de especialidad.',
     whatsappMessage: 'Hola! Estoy interesado en el servicio de cafe para eventos/ferias empresariales. Me pueden dar mas informacion?',
+    image: 'servicio-ferias.jpg',
   },
 ];
 ---
@@ -219,6 +222,7 @@ const services = [
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+    align-items: stretch;
   }
 
   /* Services */
@@ -226,6 +230,7 @@ const services = [
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+    align-items: stretch;
   }
 
   /* CTA */

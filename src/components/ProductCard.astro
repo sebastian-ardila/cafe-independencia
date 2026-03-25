@@ -26,26 +26,30 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     <img src={`${base}${image}`} alt={name} loading="lazy" />
   </div>
   <div class="product-body">
-    <h3>{name}</h3>
-    <p class="product-desc">{description}</p>
-    <div class="variant-selector">
-      {variants.map((v, i) => (
-        <button
-          class:list={['chip', 'variant-chip', { active: i === 0 }]}
-          data-variant-id={v.id}
-          data-price={v.price}
-          data-label={v.label}
-        >
-          {v.label}
-        </button>
-      ))}
+    <div class="product-info">
+      <h3>{name}</h3>
+      <p class="product-desc">{description}</p>
     </div>
-    <div class="product-bottom">
-      <div class="product-price" data-price-display>{formatPrice(variants[0].price)}</div>
-      <div class="quantity-control">
-        <button class="qty-btn qty-minus" aria-label="Reducir cantidad">&minus;</button>
-        <span class="qty-value">0</span>
-        <button class="qty-btn qty-plus" aria-label="Aumentar cantidad">+</button>
+    <div class="product-actions">
+      <div class="variant-selector">
+        {variants.map((v, i) => (
+          <button
+            class:list={['chip', 'variant-chip', { active: i === 0 }]}
+            data-variant-id={v.id}
+            data-price={v.price}
+            data-label={v.label}
+          >
+            {v.label}
+          </button>
+        ))}
+      </div>
+      <div class="product-bottom">
+        <div class="product-price" data-price-display>{formatPrice(variants[0].price)}</div>
+        <div class="quantity-control">
+          <button class="qty-btn qty-minus" aria-label="Reducir cantidad">&minus;</button>
+          <span class="qty-value">0</span>
+          <button class="qty-btn qty-plus" aria-label="Aumentar cantidad">+</button>
+        </div>
       </div>
     </div>
   </div>
@@ -61,6 +65,7 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     position: relative;
     transition: all var(--transition);
     overflow: hidden;
+    height: 100%;
   }
 
   .product-card:hover {
@@ -94,6 +99,7 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     aspect-ratio: 4 / 3;
     overflow: hidden;
     background: var(--color-bg-warm);
+    flex-shrink: 0;
   }
 
   .product-img-wrap img {
@@ -114,7 +120,12 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     flex: 1;
   }
 
-  .product-body h3 {
+  /* Info crece para empujar actions al fondo */
+  .product-info {
+    flex: 1;
+  }
+
+  .product-info h3 {
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 0.4rem;
@@ -125,8 +136,12 @@ const formatPrice = (price: number) => '$' + price.toLocaleString('es-CO');
     font-size: 0.88rem;
     color: var(--color-text-light);
     line-height: 1.6;
-    margin-bottom: 1rem;
-    flex: 1;
+    margin-bottom: 0;
+  }
+
+  /* Actions siempre al fondo */
+  .product-actions {
+    margin-top: 1.25rem;
   }
 
   .variant-selector {
