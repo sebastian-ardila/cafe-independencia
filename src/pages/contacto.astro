@@ -67,33 +67,7 @@ import Hero from '../components/Hero.astro';
           </a>
         </div>
 
-        <div class="contact-right">
-          <div class="form-card">
-            <h3>Dejanos tus datos</h3>
-            <p class="form-subtitle">Te contactaremos tan pronto como sea posible.</p>
-            <form id="contact-form" class="contact-form">
-              <div class="form-group">
-                <label for="name">Nombre</label>
-                <input type="text" id="name" name="name" placeholder="Tu nombre" required />
-              </div>
-              <div class="form-group">
-                <label for="phone">Telefono</label>
-                <input type="tel" id="phone" name="phone" placeholder="Tu numero de telefono" required />
-              </div>
-              <div class="form-group">
-                <label for="message">Mensaje</label>
-                <textarea id="message" name="message" rows="3" placeholder="En que podemos ayudarte?"></textarea>
-              </div>
-              <button type="submit" class="btn btn-whatsapp form-submit">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                Enviar por WhatsApp
-              </button>
-            </form>
-          </div>
-
-          <div class="map-card">
+        <div class="map-card">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.5!2d-75.69!3d4.81!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNMKwNDgnMzYuMCJOIDc1wrA0MScyNC4wIlc!5e0!3m2!1ses!2sco!4v1"
             width="100%"
@@ -105,7 +79,49 @@ import Hero from '../components/Hero.astro';
             title="Ubicación de Café Independencia en Pereira"
           ></iframe>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Divider -->
+  <div class="or-divider">
+    <div class="container">
+      <div class="or-line">
+        <span>o</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Section -->
+  <section class="section form-section">
+    <div class="container">
+      <div class="form-wrapper">
+        <div class="form-header">
+          <h2>Dejanos tus datos</h2>
+          <p>Te contactaremos tan pronto como sea posible.</p>
         </div>
+        <form id="contact-form" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input type="text" id="name" name="name" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefono</label>
+              <input type="tel" id="phone" name="phone" placeholder="Tu numero de telefono" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="4" placeholder="En que podemos ayudarte?"></textarea>
+          </div>
+          <button type="submit" class="btn btn-whatsapp form-submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Enviar por WhatsApp
+          </button>
+        </form>
       </div>
     </div>
   </section>
@@ -247,43 +263,80 @@ import Hero from '../components/Hero.astro';
     min-height: 540px;
   }
 
-  /* Contact right column */
-  .contact-right {
+  /* Or Divider */
+  .or-divider {
+    padding: 0;
+  }
+
+  .or-line {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
   }
 
-  /* Form */
-  .form-card {
+  .or-line::before,
+  .or-line::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--color-border);
+  }
+
+  .or-line span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: lowercase;
+  }
+
+  /* Form Section */
+  .form-section {
+    padding: 4rem 0 6rem;
+    background: var(--color-bg-warm);
+  }
+
+  .form-wrapper {
+    max-width: 640px;
+    margin: 0 auto;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius-lg);
-    padding: 2rem;
+    padding: 3rem;
   }
 
-  .form-card h3 {
-    font-size: 1.25rem;
+  .form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .form-header h2 {
+    font-size: 1.75rem;
     font-weight: 700;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.02em;
   }
 
-  .form-subtitle {
-    font-size: 0.9rem;
+  .form-header p {
+    font-size: 0.95rem;
     color: var(--color-text-light);
-    margin-bottom: 1.5rem;
   }
 
   .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.25rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
   }
 
   .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.4rem;
   }
 
   .form-group label {
@@ -297,7 +350,7 @@ import Hero from '../components/Hero.astro';
   .form-group input,
   .form-group textarea {
     width: 100%;
-    padding: 0.85rem 1rem;
+    padding: 0.9rem 1.1rem;
     border: 1px solid var(--color-border);
     border-radius: 12px;
     font-family: var(--font-body);
@@ -326,6 +379,13 @@ import Hero from '../components/Hero.astro';
   }
 
   @media (max-width: 768px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .form-wrapper {
+      padding: 2rem 1.5rem;
+    }
     .contact-layout {
       grid-template-columns: 1fr;
     }
