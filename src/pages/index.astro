@@ -364,6 +364,11 @@ const services = [
 
   .cart-item-qty { color: var(--color-accent); font-weight: 600; }
 
+  @media (max-width: 1024px) {
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-grid { grid-template-columns: 1fr; }
+  }
+
   @media (max-width: 768px) {
     .features-grid { grid-template-columns: 1fr; }
     .feature-card { border-right: none; border-bottom: 1px solid var(--color-border); padding: 2rem; }
@@ -374,15 +379,6 @@ const services = [
     .cart-summary { flex-wrap: wrap; }
     .cart-checkout { width: 100%; margin-top: 0.5rem; }
     .cta-inner h2 { font-size: 2rem; }
-  }
-
-  @media (max-width: 1024px) {
-    .products-grid { grid-template-columns: repeat(2, 1fr); }
-    .services-grid { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 640px) {
-    .products-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
   }
 </style>
 
